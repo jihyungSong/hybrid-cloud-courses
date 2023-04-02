@@ -35,7 +35,7 @@ def generate_data():
 if __name__ == "__main__":
     print("Generate Data for Training")
     while True:
-        with open("/tmp/app.log", mode="a") as file:
+        with open("/tmp/data.log", mode="a") as file:
             data = generate_data()
             file.write(f"{data}\n")
             file.close()
