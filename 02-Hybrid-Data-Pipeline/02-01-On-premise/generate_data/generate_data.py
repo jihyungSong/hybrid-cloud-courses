@@ -26,7 +26,7 @@ def generate_data():
         "id": random_id(),
         "ip": random_ip(),
         "latitude": str(location[0]),
-        "longiitude": str(location[1]),
+        "longitude": str(location[1]),
         "value": random.uniform(1, 10),
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
