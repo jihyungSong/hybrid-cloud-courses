@@ -17,18 +17,16 @@ AWS Glue 페이지로 이동하여, Databases 메뉴 에서 `Add database` 를 �
 
 * Name : `on-premise-database`
 
-Athena 페이지로 이동하여 `Data sources` 메뉴로 이동하여 `Create data source` 를 수행합니다.
+`Tables` 메뉴에서 `Add table` 을 수행합니다.  
 
-* Data source : `S3 - AWS Glue Data Catalog` 선택
-* Choose an AWS Glue Data Catalog : `AWS Glue Data Catalog in this account` 선택
-* Choose a way to create a table : `Create a table manually` 선택
-* Table name : `on-premise-data-table`
-* Choose an existing database : `on-premise-data` 선택
-* Dataset : `Browse S3` 를 통해 `on-premise-data` 선택
-* Table type : `Apache Hive`
-* File format : `JSON`
-* SerDe library : `org.openx.data.jsonserde.JsonSerDe`
-* Column details : 
+* Name : `on-premise-data-table`
+* Database : `on-premise-database`
+* Data store : `S3`
+* Data location is specified in : `my account`
+* Include path : `Browse S3` 를 통해 on-premise 데이터가 저장 중인 S3 버킷 지정
+* Data format : `JSON`
+
+[Schema Add]
 
 ```JSON
 {
@@ -43,6 +41,7 @@ Athena 페이지로 이동하여 `Data sources` 메뉴로 이동하여 `Create d
 ```
 
 Column 정보는 JSON 파일 포맷 정보를 기반으로 설정 합니다.  
+
 
 | Column # | Name       | Data type | partition key |
 |----------|------------|-----------|---------------|
