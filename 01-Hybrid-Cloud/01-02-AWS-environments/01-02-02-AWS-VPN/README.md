@@ -65,8 +65,8 @@ On-premise 구간을 연동할 VPN Connection 설정을 시작 합니다.
 - Name : `on-prem-conn`
 - Target gateway type : `Transit gateway`
 - Transit gateway : 이전 단계에서 생성한 `aws-transit-gateway` 선택
-- Customer gateway : `New`
-- IP Address : Customer Gateway 에 선언한 EIP 의 공인 IP 주소 입력
+- Customer gateway : `Existing`
+- Customer gateway ID : `on-premise-cgw`
 - BGP ASN : 65000
 - Routing options : `Dynamic (requires BGP)`
 - Tunnel inside IP version : `IPv4`
