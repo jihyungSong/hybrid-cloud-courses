@@ -36,10 +36,12 @@ AWS 쪽에 Azure VPN Gateway 를 선언하기 위해 Customer Gateway 를 설정
 Azure VPN Gateway 인스턴스가 2개가 있으므로, Customer Gateway 도 2개를 설정합니다.  
 
 ---
+
 (사전 작업)  
 AWS Customer Gateway 를 생성하기 위해서는 Azure VPN Gateway 의 BGP ASN 정보와 Public IP 가 필요합니다.  
 해당 정보를 미리 파악하도록 합니다.  
 이전 단계에서 생성한 `azure-vwan` 에서 Hubs 중 `azure-hub` 를 선택하고, `VPN (Site to site)` 메뉴로 이동하여, `Gateway configuration` 의 `View/Configure` 를 통해 VPN Gateway 정보를 파악 합니다.  
+
 ---
 
 
