@@ -11,7 +11,7 @@ Athena 를 통해 추출한 데이터를 Lambda 를 통해 주기적으로 S3 �
 분석 쿼리를 저장할 S3 버킷을 생성합니다.
 S3 페이지에서 Create bucket 을 수행합니다.  
 
-* Name : `athena-query-data-bucket`
+* Name : `athena-query-report-bucket`
 * Region : `us-east-1`
 * ACLs disabled
 * Block all public access
@@ -69,7 +69,7 @@ def lambda_handler(event, context):
 Configuration 에서 `Environment variables` 에 다음과 같이 추가 합니다.
 
 * QUERY_ID : `jason-report-query` 의 Query ID
-* S3_BUCKET : `athena-query-data-bucket`
+* S3_BUCKET : `athena-query-report-bucket`
 
 Permission 으로 이동하여, Execution role 에 추가 권한을 부여 하도록 합니다.
 Role name 을 클릭시, IAM 페이지로 이동합니다.  
