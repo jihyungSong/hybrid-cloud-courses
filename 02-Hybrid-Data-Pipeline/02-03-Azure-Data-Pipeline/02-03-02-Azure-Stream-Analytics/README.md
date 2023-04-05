@@ -67,8 +67,41 @@ FROM
 모든 설정이 완료 되었다면 `on-prem-data-analytics-job` 를 Start 합니다.  
 
 
+## 3. Blob Storage 에 데이터 업로드 하여 테스트
 
-## 3. Storage Account 에 샘플 데이터 import 후 동작 확인
+Blob storage 에 데이터를 지속적으로 발생시키기 위해, On-premise 에 작성하였던 스크립트를 다음과 같이 수정합니다.  
 
+```python
+...
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
+...(생략)
 
+if __name__ == "__main__":
+    print("Generate Data for Training")
+
+    connect_str = 'CONNECTION_STRING값을 넣어주세요'
+    container_name = 'on-prem-input-data'
+    blob_name = 'data.log'
+
+    blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+
+    if not blob_client.exists():
+        blob_client.create_append_blob()
+
+    while True:
+        data = generate_data()
+
+        with open("/mnt/on-prem-data/data.log", mode="a") as file:
+            file.write(f"{data}\n")
+            file.close()
+            print(f"success to write data in file...{data.get('id')}")
+
+        blob_client.append_block(f"{data}\n")
+        print(f"success to upload data to blob...{data.get('id')}")
+        time.sleep(1)
+```
+
+기존 file share 로 공유되는것과 함께, blob storage 에도 데이터가 동시에 적재되는 것이 확인 가능합니다.  
+이제, Stream analytics 에 의해 output 용 blob storage 에도 쿼리에 의한 데이터가 적재 되는 것을 확인 합니다.  
