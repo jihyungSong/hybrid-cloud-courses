@@ -18,6 +18,11 @@ def random_name():
 
     return f"{random.choice(first_names)} {random.choice(last_names)}"
 
+def random_gender():
+    gender = ['male', 'female']
+
+    return random.choice(gender)
+
 def generate_data():
     location = random_location()
 
@@ -26,6 +31,7 @@ def generate_data():
         "id": random_id(),
         "ip": random_ip(),
         "latitude": str(location[0]),
+        "gender": random_gender(),
         "longitude": str(location[1]),
         "value": random.uniform(1, 10),
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
