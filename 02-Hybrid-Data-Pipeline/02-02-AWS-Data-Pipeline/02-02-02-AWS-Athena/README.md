@@ -57,9 +57,11 @@ Column 정보는 JSON 파일 포맷 정보를 기반으로 설정 합니다.
 
 ## 2. AWS Athena 를 활용한 Query 실습
 
-설정한 Data Source 를 기반으로 Athena 를 통해 Query 를 실행하여 원하는 데이터를 추출해 봅니다.  
+설정한 Data Source 를 기반으로 Athena 를 통해 Query 를 실행하여 원하는 데이터를 추출해 봅니다.  ㄱ
 Amazon Athena 페이지에서 `Query editor` 메뉴로 이동합니다.  
-Editor 탭에서 다음과 같이 쿼리를 수행합니다.  
+쿼리를 수행하기 전에 `Settings` 항목에서 Query result 저장하기 위한 S3 버킷을 지정합니다.  
+해당 버킷은 신규로 생성하도록 합니다.  
+모든 설정을 완료 했다면, `Editor` 탭에서 다음과 같이 쿼리를 수행합니다.  
 
 ```sql
 SELECT * 
